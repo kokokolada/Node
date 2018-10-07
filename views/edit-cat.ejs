@@ -1,0 +1,39 @@
+<% include partials/header.ejs %>
+<div class="container">
+    <% if (message) { %>
+        <p class="text-center text-danger"><%= message %></p>
+    <% } %>
+
+    <% if (cat) { %>
+        <form class="add-cat-form" action="" method="post" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="name">name</label>
+                    <input type="text" class="form-control" name="name" id="name" value="<%= cat.name %>" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="gender">gender</label>
+                    <input type="text" class="form-control" name="gender" id="gender" value="<%= cat.gender %>" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="age">age</label>
+                    <input type="number" class="form-control" name="age" id="age" placeholder="Number" value="<%= cat.age %>" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="breed">Breed</label>
+                    <input type="text" class="form-control" name="breed" id="breed" placeholder="breed" value="<%= cat.breed %>" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success float-right">Update cat</button>
+        </form>
+    <% } else { %>
+        <p class="text-center">cat Not Found. Go <a href="/add">here</a> to add cats.</p>
+    <% } %>
+</div>
+</div>
+</body>
+</html>
