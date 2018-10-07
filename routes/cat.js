@@ -64,7 +64,7 @@ module.exports = {
         let CatId = req.params.id;
         let deleteUserQuery = 'DELETE FROM cats WHERE id = "' + catID + '"';
 
-        db.query(getImageQuery, (err, result) => {
+        db.query(deleteUserQuery, (err, result) => {
             if (err) {
                 return res.status(500).send(err);
             }
