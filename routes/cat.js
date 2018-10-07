@@ -26,7 +26,7 @@ module.exports = {
                 console.log(query);      
             }
             res.redirect('/');
-            
+            console.log(query); 
             });
 
     },
