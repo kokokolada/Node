@@ -23,23 +23,22 @@ module.exports = {
             
             if (err) {
                 return res.status(500).send(err);
-                console.log(query);      
             }
             res.redirect('/');
-            console.log(query); 
             });
 
     },
 
     editCatPage: (req, res) => {
-        let catId = req.params.id;
-        let query = "SELECT * FROM `cats` WHERE id = '" + catID + "' ";
+        let catID = req.params.id;
+        console.log(req.params.id);
+        let query = "SELECT * FROM `cats` WHERE cat_id = '" + catID + "' ";
         db.query(query, (err, result) => {
             if (err) {
                 return res.status(500).send(err);
             }
             res.render('edit-cat.ejs', {
-                title: "Edit  cat"
+                title: "Edit cat"
                 ,cat: result[0]
                 ,message: ''
             });
@@ -52,7 +51,7 @@ module.exports = {
         let age = req.body.age;
         let breed = req.body.breed;
 
-        let query = "UPDATE `cats` SET `name` = '" + name + "', `gender` = '" + gender + "', `age` = '" + age + "', `breed` = '" + breed + "' WHERE `cats`.`id` = '" + catID + "'";
+        let query = "UPDATE `cats` SET `name` = '" + name + "', `gender` = '" + gender + "', `age` = '" + age + "', `breed` = '" + breed + "' WHERE `cat_id` = '" + catID + "'";
         db.query(query, (err, result) => {
             if (err) {
                 return res.status(500).send(err);
@@ -61,17 +60,15 @@ module.exports = {
         });
     },
     deleteCat: (req, res) => {
-        let CatId = req.params.id;
-        let deleteUserQuery = 'DELETE FROM cats WHERE id = "' + catID + '"';
+        let catID = req.params.id;
+        let deleteUserQuery = 'DELETE FROM cats WHERE cat_id = "' + catID + '"';
 
         db.query(deleteUserQuery, (err, result) => {
             if (err) {
                 return res.status(500).send(err);
             }
-
                     res.redirect('/');
                 });
-            
         
     }
 };

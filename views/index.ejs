@@ -15,14 +15,14 @@
                 <tbody>
                     <% cats.forEach((cat, index) => { %>
                         <tr>
-                            <th scope="row"><%= cat.id %></th>
+                            <th scope="row"><%= cat.cat_id %></th>
                             <td><%= cat.name %></td>
                             <td><%= cat.gender %></td>
                             <td><%= cat.age %></td>
                             <td><%= cat.breed %></td>
                             <td>
-                                <a href="/edit/<%= cat.id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
-                                <a href="/delete/<%= cat.id %>" class="btn btn-sm btn-danger">Delete</a>
+                                <a href="/edit/<%= cat.cat_id %>" target="_blank" rel="noopener" class="btn btn-sm btn-success">Edit</a>
+                                <a href="/delete/<%= cat.cat_id %>" class="btn btn-sm btn-danger">Delete</a>
                             </td>
                         </tr>
                     <% }) %>
