@@ -16,7 +16,7 @@ module.exports = {
         let breed = req.body.breed;
         
         // send the cat's details to the database
-        let query = "INSERT INTO `cats` (`name`, `gender`, `age`, `breed`) VALUES ('" +
+        let query = "INSERT INTO `cats` (name, gender, age, breed) VALUES ('" +
         name + "', '" + gender + "', '" + age + "', '" + breed + "')";
 
         db.query(query, (err, result) => {

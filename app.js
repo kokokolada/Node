@@ -1,11 +1,11 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const mysql = require('mysql');
-const path = require('path');
-const app = express();
+const express = require('express'); //used to create handle routing and process requests from the client
+const bodyParser = require('body-parser'); //used to parse incoming request from the client
+const mysql = require('mysql'); //Node JS driver for MySQL
+const path = require('path');//string or array of absolute paths to search for files
+const app = express();//we run express function to create our app variable
 
-const {getHomePage} = require('./routes/index');
-const {addCatPage, addCat, deleteCat, editCat, editCatPage} = require('./routes/cat');
+const {getHomePage} = require('./routes/index');  //define homepage
+const {addCatPage, addCat, deleteCat, editCat, editCatPage} = require('./routes/cat'); //define other pages
 const port = 3000;
 
 // create connection to database
@@ -30,8 +30,8 @@ global.db = db;
 app.set('port', process.env.port || port); // set express to use this port
 app.set('views', __dirname + '/views'); // set express to look in this folder to render our view
 app.set('view engine', 'ejs'); // configure template engine
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json()); // parse form data client
+app.use(bodyParser.urlencoded({ extended: false })); //basically tells the system if either complex parsing (true) -can deal withnested objects- or simple algorithm (false)will be used
+app.use(bodyParser.json()); // parse form data client, tells the system that you want json to be used
 app.use(express.static(path.join(__dirname, 'public'))); // configure express to use public folder
 
 // routes for the app
