@@ -13,10 +13,9 @@ const port = 3000;
 const db = mysql.createConnection ({
     host: 'tigu.hk.tlu.ee',
     user: 'anneliserandmaa',
-    password: '5cPQkKbO',
+    password: 'password',
     database: 'anneliserandmaa'
 });
-
 // connect to database
 db.connect((err) => {
     if (err) {
@@ -25,8 +24,7 @@ db.connect((err) => {
     console.log('Connected to database');
 });
 global.db = db;
-
-// configure middleware
+// configure middleware - software that acts as a bridge between an operating system or database and applications, especially on a network
 app.set('port', process.env.port || port); // set express to use this port
 app.set('views', __dirname + '/views'); // set express to look in this folder to render our view
 app.set('view engine', 'ejs'); // configure template engine
@@ -35,7 +33,6 @@ app.use(bodyParser.json()); // parse form data client, tells the system that you
 app.use(express.static(path.join(__dirname, 'public'))); // configure express to use public folder
 
 // routes for the app
-
 app.get('/', getHomePage);
 app.get('/add', addCatPage);  
 app.get('/edit/:id', editCatPage);
